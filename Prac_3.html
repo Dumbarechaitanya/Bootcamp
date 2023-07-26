@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prac_3</title>
+    <style>
+        *
+        body{  background-color: antiquewhite; background-image: url("images/Backimg3.jpg")}
+    </style>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let name =document.getElementById("name");
+            let job =document.getElementById("JOB");
+            let MS =document.getElementById("MS");
+            let MBA =document.getElementById("MBA");
+            let ans =document.getElementById("ans");
+            if (name.value =="")
+            {
+                alert("Please Enter Name")
+                ans.innerHTML = "";
+                name.focus();
+                return;
+
+            }
+            else if (name.value.trim() =="")
+            {
+                alert("Please Enter Name")
+                ans.innerHTML = "";
+                name.value = "";
+                name.focus();
+                return;
+            }
+            else if (! name.value.match(/^[A-Za-z ]+$/))
+            {
+                alert("Please Enter Name")
+                ans.innerHTML = "";
+                name.value = "";
+                name.focus();
+                return;
+            }
+            let choice = "";
+            if (job.checked) choice = "JOB"
+            else if (MS.checked) choice = "MS"
+            else if (MBA.checked) choice = "MBA"
+            let A = "You will be notified when seat is available for "+choice;
+            let msg = name.value+ " You have selected "+choice+" as your career choice "+A;
+            ans.innerHTML = msg;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1 style="font-size: 50px;color:royalblue;  ">Welcome to Web Programming </h1>
+        <h2 style="font-size: 30px; color: cornflowerblue;"> Day-2</h2>
+        <h3 style="font-size: 20px; color: red;"> Career Selector</h3>
+        <form onsubmit="show()">
+            <input style="height: 30px; width: 200px; background-color: rgb(162, 244, 255);" type="text" placeholder="Enter Name" id="name">
+            <br>
+            <input  value="JOB" type="radio"name = "c" id = "JOB" checked = true > JOB
+            <input  value="MS" type="radio"name = "c" id = "MS" > MS
+            <input   type="radio" aria-label="MBA" name = "c" id = "MBA" > MBA
+            <br><br>
+            <input type="submit" style="align-items: center;">
+        </form>
+        <h1 style="font-size: 50px;" id="ans"> </h1>
+    </center>
+</body>
+</html>

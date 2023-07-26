@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prac_1</title>
+    <style>body{background-color: crimson; background-image: url("images/Backimg1.jpg")}</style>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let name =document.getElementById("name");
+            if (name.value =="")
+            {
+                alert("Please Enter Name")
+                name.focus();
+                ans.innerHTML = "";
+                return;
+
+            }
+            else if (name.value.trim() =="")
+            {
+                alert("Please Enter Name")
+                name.value = "";
+                name.focus();
+                ans.innerHTML = "";
+                return;
+            }
+            else if (! name.value.match(/^[A-Za-z ]+$/))
+            {
+                alert("Please Enter Name")
+                name.value = "";
+                ans.innerHTML = "";
+                name.focus();
+                return;
+            }
+            let ans =document.getElementById("ans");
+            let d = new Date();
+            let hr = d.getHours();
+            let msg = "";
+            if (hr < 12) msg ="Good Morning";
+            else if (12 >hr<16) msg= "Good Afternoon";
+            else if(16 >hr<21) msg= "Good Evening";
+            else msg= "Good Night";
+            ans.innerHTML = msg + " " + name.value;
+        }
+    </script>
+</head>
+<body>
+    
+    <center>
+        <h1 style="font-size: 60px;color:royalblue;  ">Welcome to Web Programming </h1>
+        <h2 style="font-size: 40px; color: cornflowerblue;"> Day-1</h2>
+        <form onsubmit="show()">
+            <input type="text" placeholder="Enter Your name" id="name">
+            <br>
+            <br>
+            <input type="submit" value="Greet"style="align-items: center;">
+            <h1 id="ans"> </h1>
+        </form>
+    </center>
+</body>
+</html>
