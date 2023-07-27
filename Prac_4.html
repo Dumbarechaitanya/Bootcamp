@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prac_4</title>
+    <style>
+        *
+        body{  background-color: antiquewhite; background-image: url("images/Backimg3.jpg")}
+    </style>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let name =document.getElementById("name");
+            let C =document.getElementById("C");
+            let Java =document.getElementById("Java");
+            let Python =document.getElementById("Python");
+            let HCJ =document.getElementById("HTML,CSS,Javascript");
+            let ans =document.getElementById("ans");
+            if (name.value =="")
+            {
+                alert("Please Enter Name")
+                ans.innerHTML = "";
+                name.focus();
+                return;
+
+            }
+            else if (name.value.trim() =="")
+            {
+                alert("Please Enter Name")
+                ans.innerHTML = "";
+                name.value = "";
+                name.focus();
+                return;
+            }
+            else if (! name.value.match(/^[A-Za-z ]+$/))
+            {
+                alert("Please Enter Name")
+                ans.innerHTML = "";
+                name.value = "";
+                name.focus();
+                return;
+            }
+            let languages = "";
+            if (C.checked) languages =languages + "C, "
+            if (Java.checked) languages = languages + "Java, "
+            if (Python.checked) languages = languages + "Python, "
+            if (HCJ.checked) languages = languages + "HTML, CSS, Javascript"
+            let A = "You will be notified when Job is available based on "+languages+".";
+            let msg = name.value+ " You have selected "+languages+" as learned Languages. \n"+A;
+            ans.innerHTML = msg;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1 style="font-size: 50px;color:royalblue;  ">Welcome to Web Programming </h1>
+        <h2 style="font-size: 30px; color: cornflowerblue;"> Day-2</h2>
+        <h3 style="font-size: 20px; color: red;"> learned Languages</h3>
+        <form onsubmit="show()">
+            <input style="height: 30px; width: 200px; background-color: rgb(162, 244, 255);" type="text" placeholder="Enter Name" id="name">
+            <br>
+            <input   type="checkbox" name = "c" id = "C" checked = true > C
+            <input   type="checkbox" name = "c" id = "Java" > Java
+            <input   type="checkbox" name = "c" id = "Python" > Python
+            <input   type="checkbox" name = "c" id = "HTML,CSS,Javascript" > HTML,CSS,Javascript
+            <br><br>
+            <input type="submit" style="align-items: center;">
+        </form>
+        <h2 style="font-size: 50px;" id="ans"> </h2>
+    </center>
+</body>
+</html>
