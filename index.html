@@ -7,6 +7,21 @@
     <style>body{background-color: crimson; background-image: url("images/BackimgM.jpg")}</style>
 </head>
 <body>
+    <script>
+        function show()
+        {
+            let ans = document.getElementById("ans");
+            let url = "https://api.quotable.io/random";
+            
+            fetch(url)
+            .then(res => res.json())
+            .then(data => ans.innerHTML = data.content + "\n -by   "+data.author)
+            .catch(err => ans.innerHTML + "issue "+err);
+        }
+        show();
+        setInterval(show,5000);
+    </script>
+    <h3 id ="ans"></h3>
     <img class="image" src="images/Portfolio.png" alt="Chaitanya Profile Photo" style=" float:left;width:200px;height:200px;">
     <h2>Hello!</h2>
     <h1 class="A"><i> I am <span class="name">Chaitanya Dumbare</span>  </i></h1>
