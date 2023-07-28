@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        body{  background-color: antiquewhite; background-image: url("images/Backimg5.jpg")}
+    </style>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let ans = document.getElementById("ans");
+            let url = "https://api.quotable.io/random";
+            
+            fetch(url)
+            .then(res => res.json())
+            .then(data => ans.innerHTML = data.content + "-->"+data.author)
+            .catch(err => ans.innerHTML + "issue "+err);
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h1 style="font-size: 50px;color:royalblue;  ">Welcome to Web Programming </h1>
+        <h2 style="font-size: 30px; color: cornflowerblue;"> Day-3</h2>
+        <h3 style="font-size: 20px; color: red;"> Motivational Messages</h3>
+        <form onsubmit="show()">
+            <input type="submit" value="Get Messages">
+        </form>
+        <h1 id ="ans"></h1>
+    </center>
+</body>
+</html>

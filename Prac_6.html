@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        body{  background-color: antiquewhite; background-image: url("images/Backimg6.jpg")}
+    </style>
+    <script>
+        function show()
+        {
+            event.preventDefault();
+            let aid = document.getElementById("aid");
+            let ans = document.getElementById("ans");
+            let url = "https://api.exchangerate-api.com/v4/latest/USD";
+            
+            fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                let D = data["rates"]["INR"];
+                let AID = parseFloat(aid.value);
+                let AIR = AID * D;
+                let msg = "₹"+ AIR.toFixed(2);
+                ans.innerHTML = msg;
+            })
+            .catch(err => ans.innerHTML + "issue "+err);
+        }
+    </script>
+</head>
+<body>
+    <center>
+    <h1 style="font-size: 50px;color:aqua;  ">Welcome to Web Programming </h1>
+    <h2 style="font-size: 30px; color:red;"> Day-3</h2>
+    <h3 style="font-size: 20px; color:azure;"> Currency Converter</h3>
+    <form onsubmit="show()">
+        <input type="number" step="any" placeholder="Enter amount in $$" id="aid">
+        <br><br>
+        <input type="submit" value="Convert">
+    </form>
+    <h3 id ="ans"></h3>
+    
+    </center>
+    
+</body>
+</html>
